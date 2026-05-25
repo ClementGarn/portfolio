@@ -5,10 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollToPlugin.min.js"></script>
   </head>
   <body>
+    <div id="fire-cursor"></div>
     <section class="hero">
-        <img class="parallax_5" src="../../assets/images/bg-6.png" alt="">
+        <div class="title">
+            <h2>Etudiant Développeur</h2>
+            <h1>Clément <br> Garnier</h1>
+        </div>
+        <img class="parallax_6" src="../../assets/images/bg-7.png" alt="">
+        <!--<img class="parallax_5" src="../../assets/images/bg-6.png" alt="">-->
         <img class="parallax_4" src="../../assets/images/bg-5.png" alt="">
         <img class="parallax_3" src="../../assets/images/bg-4.png" alt="">
         <img class="parallax_2" src="../../assets/images/bg-3.png" alt="">
@@ -16,8 +24,98 @@
         <img class="parallax_0" src="../../assets/images/bg-1.png" alt="">
     </section>
     <section class="content">
-        <h1>Title goes here</h1>
-        
+        <button id="scroll-btn">Catégorie 1</button>
     </section>
+    <div class="slider">
+
+      <div class="quote-slider-wrapper">
+        <div class="swiper-container quote-slider">
+          <div class="swiper-wrapper">
+            
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences - web</h2>
+                                <h2 class="slide-sub">CSS</h2>
+                <div class="quote-text">
+                    Je peux désormais appliquer des styles css ainsi que des animations simples telles que celle du château ambulant sur ce site
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences - web</h2>
+                <h2 class="slide-sub">HTML</h2>
+                <div class="quote-text">
+                  Maîtrise de la structure sémantique HTML5 — mise en page, accessibilité, et organisation des contenus. Base solide sur laquelle repose chacun de mes projets.
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences - web</h2>
+                <h2 class="slide-sub">PHP</h2>
+                <div class="quote-text">
+                  Développement back-end en PHP : gestion de bases de données, logique serveur, et création de dynamiques côté serveur pour des applications web fonctionnelles.
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences - web</h2>
+                <h2 class="slide-sub">JavaScript</h2>
+                <div class="quote-text">
+                  JavaScript natif et librairies avancées — GSAP pour les animations et transitions fluides, Swiper pour les interactions de type carousel. Ce site en est la démonstration directe.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="image-slider-wrapper">
+        <div class="swiper-container image-slider">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy"
+                     src="../../assets/images/landscape-1.png"
+                     data-src="../../assets/images/landscape-1.png"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy"
+                     src="../../assets/images/landscape-2.jpg"
+                     data-src="../../assets/images/landscape-2.jpg"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy"
+                     src="../../assets/images/feu.jpg"
+                     data-src="../../assets/images/feu.jpg"
+                />
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy"
+                     src="https://fakeimg.pl/600x400"
+                     data-src="https://fakeimg.pl/600x400"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+    </div>
+    <script src="main.js"></script>
   </body>
 </html>

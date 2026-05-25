@@ -1,6 +1,23 @@
+@font-face {
+	font-family: 'Mulish';
+	src: url('../../assets/fonts/mulish-VariableFont_wght.woff2') format('woff2');
+	font-weight: 100 900;
+	font-style: normal;
+}
+@font-face {
+	font-family: 'retro lagoon';
+	src: url('../../assets/fonts/Retro Lagoon.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+  font-family: 'Albertus';
+  src: url(../../assets/fonts/Albertus\ Medium\ Regular.woff2);
+}
 html, body {
 	 padding: 0;
 	 margin: 0;
+	 color: #23322d;
 }
  * {
 	 box-sizing: border-box;
@@ -16,7 +33,7 @@ html, body {
 	 object-fit: cover;
 	 object-position: center;
 	 width: 100%;
-	 height: 1038px;
+	 height: 100%;
 	 animation-name: parallax;
 	 animation-timing-function: linear;
 	 animation-timeline: scroll();
@@ -26,6 +43,7 @@ html, body {
 }
  .hero > .parallax_1 {
 	 --speed: 100 * 1;
+
 }
  .hero > .parallax_2 {
 	 --speed: 100 * 2;
@@ -40,7 +58,11 @@ html, body {
 	 --speed: 100 * 5;
 }
  .hero > .parallax_6 {
-	 --speed: 100 * 6;
+	 position: fixed;
+	 top: 0;
+	 left: 0;
+	 z-index: -1;
+	 animation: none;
 }
  .hero > .parallax_7 {
 	 --speed: 100 * 7;
@@ -54,14 +76,276 @@ html, body {
 	}
 }
  .content {
-	 background-color: #200104;
-	 padding: 5vw;
-	 color: white;
+	 background-color: white;
+	 padding: 2vw 5vw;
+	 color: #23322d;
 	 position: relative;
 	 z-index: 1;
+   font-family: 'retro lagoon', sans-serif;
+   font-weight: lighter;
 }
  .content > * {
 	 max-width: 65rem;
 	 margin-inline: auto;
 }
+ .title {
+    /* color: #CD4356; */
+    z-index: 1;
+    font-family: 'Albertus', sans-serif;
+    grid-area: stack;
+    place-self: center;
+    text-align: center;
+    transform: translateX(300px);
+    text-transform: uppercase;
+    color: #23322d;
+    text-shadow: -1px -1px 10px #8eb941f0;
+ }
+ .title h1 {
+    font-size: max(8.1rem, 9vw);
+    font-weight: lighter;
+ }
+ .title h2 {
+    font-family: 'Mulish', sans-serif;
+    font-size: max(0.94rem, 1vw);
+    font-weight: 800;
+    place-self: self-start;
+    padding-left: 15px;
+ }
  
+ .cursor {
+    pointer-events: none;
+    
+    &__ball {
+      position: fixed;
+      top: 0;
+      left: 0;
+      mix-blend-mode: difference;
+      z-index: 1000;
+      
+      circle {
+        fill: #f7f8fa;
+      }
+    }
+  }
+
+ #scroll-btn {
+    all: unset;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Mulish', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #23322d;
+    border-bottom: 2px solid rgb(18, 21, 30);
+    padding-bottom: 4px;
+    transition: gap 0.3s ease, opacity 0.3s ease;
+ }
+ #scroll-btn::after {
+    content: '↓';
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+ }
+ #scroll-btn:hover {
+    gap: 0.9rem;
+    opacity: 0.6;
+ }
+ #scroll-btn:hover::after {
+    transform: translateY(4px);
+ }
+
+ .slider {
+  display: flex;
+  position: relative;
+  background-color: #8EB941;
+}
+
+.quote-slider-wrapper {
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  overflow: hidden;
+  background-color: #D8DD5D;
+}
+.quote-slider {
+  height: 100vh;
+}
+
+.quote-text-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 10% 10% 0;
+}
+.quote-text {
+  max-width: 500px;
+  font-family: 'Mulish', sans-serif;
+  font-size: max(1.2rem, 1.4vw);
+  margin-top: 1.5rem;
+}
+
+.quote-text {
+  transition: all 0.3s;
+}
+.swiper-slide.swiper-slide-next .quote-text,
+.swiper-slide.swiper-slide-prev .quote-text {
+  opacity: 0;
+}
+.swiper-slide.swiper-slide-active .quote-text {
+  opacity: 1;
+}
+
+
+.image-slider-wrapper {
+  position: relative;
+  -ms-flex: 0 0 50%;
+  flex: 0 0 50%;
+  max-width: 50%;
+  background-color: #f1f1f1;
+  overflow: hidden;
+}
+.image-slider {
+  height: 100vh;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  --swiper-navigation-size: max(5rem, 5vw);
+  background-image: url('../../assets/images/fleche-bois-mousse.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: max(3rem, 4vw) !important;
+  height: max(3rem, 4vw) !important;
+  opacity: 1;
+  filter: brightness(0.85);
+}
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none;
+}
+.swiper-button-prev {
+  transform: scaleX(-1);
+}
+
+.swiper-slide {
+    position: relative;
+    overflow: hidden;
+}
+.swiper-slide-inner { 
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.slide-sub {
+  font-family: 'Mulish', sans-serif;
+  font-size: max(1.1rem, 1.4vw);
+  font-weight: 800;
+  margin-top: 0.5rem;
+}
+
+.slide-title {
+    font-size: max(4rem, 5vw);
+    line-height: 1.05;
+    letter-spacing: 0.03em;
+    font-weight: lighter;
+    color: #23322d;
+    font-family: 'retro lagoon', sans-serif;
+}
+
+
+
+
+
+
+
+body.cursor-hidden,
+body.cursor-hidden * {
+  cursor: none !important;
+}
+
+#fire-cursor {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    z-index: 999999;
+
+    background-image: url("../../assets/SPRITE/sprite.png");
+    background-size: 700% 600%;
+    background-repeat: no-repeat;
+
+    transform: translate(-50%, -50%);
+
+    will-change: transform, left, top;
+
+    filter:
+      drop-shadow(0 0 8px rgba(255, 140, 0, 0.8))
+      drop-shadow(0 0 18px rgba(255, 100, 0, 0.6))
+      drop-shadow(0 0 30px rgba(255, 180, 0, 0.4));
+
+    animation: fireGlow 1.5s infinite ease-in-out;
+  }
+
+  #fire-cursor::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 180, 0, 0.45) 0%,
+      rgba(255, 120, 0, 0.2) 40%,
+      rgba(255, 80, 0, 0) 70%
+    );
+
+    filter: blur(12px);
+
+    z-index: -1;
+  }
+
+  @keyframes fireGlow {
+    0% {
+      filter:
+        drop-shadow(0 0 8px rgba(255, 140, 0, 0.8))
+        drop-shadow(0 0 18px rgba(255, 100, 0, 0.6))
+        drop-shadow(0 0 30px rgba(255, 180, 0, 0.4));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 12px rgba(255, 180, 0, 1))
+        drop-shadow(0 0 24px rgba(255, 120, 0, 0.8))
+        drop-shadow(0 0 40px rgba(255, 200, 0, 0.5));
+    }
+    100% {
+      filter:
+        drop-shadow(0 0 8px rgba(255, 140, 0, 0.8))
+        drop-shadow(0 0 18px rgba(255, 100, 0, 0.6))
+        drop-shadow(0 0 30px rgba(255, 180, 0, 0.4));
+    }
+  }

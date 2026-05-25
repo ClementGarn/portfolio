@@ -1,0 +1,256 @@
+<style>
+  body {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(39, 202, 231);
+  }
+  #fire-cursor {
+    position: fixed;
+    width: 70px;
+    height: 70px;
+    pointer-events: none;
+    z-index: 999999;
+
+    background-image: url("sprite.png");
+    background-size: 700% 600%;
+    background-repeat: no-repeat;
+
+    transform: translate(-50%, -50%);
+
+    will-change: transform, left, top;
+
+    filter:
+      drop-shadow(0 0 8px rgba(255, 140, 0, 0.8))
+      drop-shadow(0 0 18px rgba(255, 100, 0, 0.6))
+      drop-shadow(0 0 30px rgba(255, 180, 0, 0.4));
+
+    animation: fireGlow 1.5s infinite ease-in-out;
+  }
+
+  #fire-cursor::before {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 180, 0, 0.45) 0%,
+      rgba(255, 120, 0, 0.2) 40%,
+      rgba(255, 80, 0, 0) 70%
+    );
+
+    filter: blur(12px);
+
+    z-index: -1;
+  }
+
+  @keyframes fireGlow {
+    0% {
+      filter:
+        drop-shadow(0 0 8px rgba(255, 140, 0, 0.8))
+        drop-shadow(0 0 18px rgba(255, 100, 0, 0.6))
+        drop-shadow(0 0 30px rgba(255, 180, 0, 0.4));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 12px rgba(255, 180, 0, 1))
+        drop-shadow(0 0 24px rgba(255, 120, 0, 0.8))
+        drop-shadow(0 0 40px rgba(255, 200, 0, 0.5));
+    }
+    100% {
+      filter:
+        drop-shadow(0 0 8px rgba(255, 140, 0, 0.8))
+        drop-shadow(0 0 18px rgba(255, 100, 0, 0.6))
+        drop-shadow(0 0 30px rgba(255, 180, 0, 0.4));
+    }
+  }
+</style>
+
+<body>
+<div id="fire-cursor"></div>
+</body>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Droite
+  // 2. Bas
+  // 3. Gauche
+  // 4. Haut
+  // 5. Face
+  // 6. Apparition / disparition
+
+  const isMobile =
+    /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
+      navigator.userAgent
+    );
+
+  if (!isMobile) {
+
+    const sprite = document.querySelector("#fire-cursor");
+
+    const cols = 7;
+    const rows = 6;
+    let currentFrame = 0;
+    let currentRow = 5;
+    let lastX = null;
+    let lastY = null;
+    let lastMove = Date.now();
+    let isBlocked = false;
+    let timer = null;
+    let currentDirection = null;
+
+    // position cible de la souris
+    let targetX = window.innerWidth / 2;
+    let targetY = window.innerHeight / 2;
+
+    // position actuelle du sprite
+    let currentX = targetX;
+    let currentY = targetY;
+
+    function showSprite(row, frame) {
+
+      let x = frame * (100 / (cols - 1));
+      let y = (row - 1) * (100 / (rows - 1));
+
+      sprite.style.backgroundPosition = x + "% " + y + "%";
+    }
+
+    function startLoop(row) {
+      if (isBlocked) return;
+      if (currentDirection === row) return;
+
+      currentDirection = row;
+      currentRow = row;
+      currentFrame = 0;
+
+      clearInterval(timer);
+
+      timer = setInterval(function () {
+        showSprite(currentRow, currentFrame);
+        currentFrame++;
+
+        if (currentFrame >= cols) {
+          currentFrame = 0;
+        }
+      }, 80);
+    }
+
+    function playLineOnce(row, reverse, endFunction) {
+      currentDirection = null;
+      isBlocked = true;
+
+      clearInterval(timer);
+
+      if (reverse) {
+        currentFrame = cols - 1;
+      } else {
+        currentFrame = 0;
+      }
+
+      timer = setInterval(function () {
+        showSprite(row, currentFrame);
+        if (reverse) {
+          currentFrame--;
+          if (currentFrame < 0) {
+            clearInterval(timer);
+            isBlocked = false;
+            if (endFunction) {
+              endFunction();
+            }
+          }
+        } else {
+          currentFrame++;
+          if (currentFrame >= cols) {
+            clearInterval(timer);
+            isBlocked = false;
+            if (endFunction) {
+              endFunction();
+            }
+          }
+        }
+      }, 100);
+    }
+
+    document.addEventListener("mousemove", function (event) {
+
+      targetX = event.clientX;
+      targetY = event.clientY;
+
+      if (isBlocked) return;
+
+      if (lastX !== null && lastY !== null) {
+        let diffX = event.clientX - lastX;
+        let diffY = event.clientY - lastY;
+
+        // horizontal
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+          if (diffX > 2) {
+            startLoop(1);
+          }
+          if (diffX < -2) {
+            startLoop(3);
+          }
+        }
+        // vertical
+        else {
+          if (diffY > 2) {
+            startLoop(2);
+          }
+          if (diffY < -2) {
+            startLoop(4);
+          }
+        }
+      }
+      lastX = event.clientX;
+      lastY = event.clientY;
+
+      lastMove = Date.now();
+    });
+
+    document.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      playLineOnce(6, false, function () {
+        startLoop(5);
+      });
+    }, true);
+
+    setInterval(function () {
+      if (!isBlocked) {
+        let timeWithoutMove = Date.now() - lastMove;
+        if (timeWithoutMove > 200) {
+          startLoop(5);
+        }
+      }
+    }, 100);
+
+    // animation fluide
+    function followCursor() {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+
+      sprite.style.left = currentX + "px";
+      sprite.style.top = currentY + "px";
+
+      requestAnimationFrame(followCursor);
+    }
+
+    followCursor();
+
+    window.addEventListener("load", function () {
+      playLineOnce(6, true, function () {
+        startLoop(5);
+      });
+    });
+  }
+});
+</script>
