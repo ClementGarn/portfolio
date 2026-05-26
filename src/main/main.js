@@ -1,5 +1,18 @@
 gsap.registerPlugin(ScrollToPlugin);
 
+const musicPopup = document.getElementById('music-popup');
+const bgMusic = document.getElementById('bg-music');
+
+document.getElementById('music-yes').addEventListener('click', () => {
+  bgMusic.volume = 0.5;
+  bgMusic.play();
+  musicPopup.remove();
+});
+
+document.getElementById('music-no').addEventListener('click', () => {
+  musicPopup.remove();
+});
+
 document.getElementById("scroll-btn").addEventListener("click", () => {
   gsap.to(window, {
     scrollTo: { y: document.querySelector('.slider').offsetTop },
@@ -7,6 +20,7 @@ document.getElementById("scroll-btn").addEventListener("click", () => {
     ease: "power2.inOut"
   });
 });
+
 
 
 

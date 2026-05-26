@@ -4,11 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollToPlugin.min.js"></script>
   </head>
   <body>
+    <audio id="bg-music" loop>
+        <source src="../../assets/sound/Howls Moving Castle [OST - Theme Song].mp3" type="audio/mpeg">
+    </audio>
+    <div id="music-popup">
+      <p>Jouer la musique ?</p>
+      <div class="music-popup-btns">
+        <button id="music-yes">Oui</button>
+        <button id="music-no">Non</button>
+      </div>
+    </div>
     <div id="fire-cursor"></div>
     <section class="hero">
         <div class="title">
@@ -23,52 +36,133 @@
         <img class="parallax_1" src="../../assets/images/bg-2.png" alt="">
         <img class="parallax_0" src="../../assets/images/bg-1.png" alt="">
     </section>
+    <div class="title-text">
+        <div class="text-presentation">
+            <h2>Du back au front <br> je construis des applications pensées pour durer <br> propres dans le code et soignées dans l'interface</h2>
+        </div>
+        <div class="cta-presentation">
+            <button class="cta-button">voir mes projets</button>
+        </div>
+    </div>
     <section class="content">
-        <button id="scroll-btn">Catégorie 1</button>
+        <button id="scroll-btn">Compétences</button>
     </section>
     <div class="slider">
 
       <div class="quote-slider-wrapper">
         <div class="swiper-container quote-slider">
           <div class="swiper-wrapper">
-            
+
             <div class="swiper-slide">
               <div class="quote-text-wrap">
-                <h2 class="slide-title">Compétences - web</h2>
-                                <h2 class="slide-sub">CSS</h2>
+                <h2 class="slide-title">Compétences <br> web</h2>
+                <h2 class="slide-sub">CSS</h2>
                 <div class="quote-text">
-                    Je peux désormais appliquer des styles css ainsi que des animations simples telles que celle du château ambulant sur ce site
+                  Je peux désormais appliquer des styles css ainsi que des animations simples telles que celle du château ambulant sur ce site
                 </div>
               </div>
             </div>
 
             <div class="swiper-slide">
               <div class="quote-text-wrap">
-                <h2 class="slide-title">Compétences - web</h2>
+                <h2 class="slide-title">Compétences <br> web</h2>
                 <h2 class="slide-sub">HTML</h2>
                 <div class="quote-text">
                   Maîtrise de la structure sémantique HTML5 — mise en page, accessibilité, et organisation des contenus. Base solide sur laquelle repose chacun de mes projets.
                 </div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="quote-text-wrap">
-                <h2 class="slide-title">Compétences - web</h2>
+                <h2 class="slide-title">Compétences <br> web</h2>
                 <h2 class="slide-sub">PHP</h2>
                 <div class="quote-text">
                   Développement back-end en PHP : gestion de bases de données, logique serveur, et création de dynamiques côté serveur pour des applications web fonctionnelles.
                 </div>
               </div>
             </div>
+
             <div class="swiper-slide">
               <div class="quote-text-wrap">
-                <h2 class="slide-title">Compétences - web</h2>
+                <h2 class="slide-title">Compétences <br> web</h2>
                 <h2 class="slide-sub">JavaScript</h2>
                 <div class="quote-text">
                   JavaScript natif et librairies avancées — GSAP pour les animations et transitions fluides, Swiper pour les interactions de type carousel. Ce site en est la démonstration directe.
                 </div>
               </div>
             </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> apps</h2>
+                <h2 class="slide-sub">Java</h2>
+                <div class="quote-text">
+                  Développement d'applications orientées objet en Java — classes, héritage, interfaces et gestion des exceptions. Langage central de ma formation IUT, utilisé sur plusieurs projets structurants.
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> apps</h2>
+                <h2 class="slide-sub">Python</h2>
+                <div class="quote-text">
+                  Notions de base acquises en autonomie — syntaxe, structures de données, scripts simples. Découvert en parallèle par curiosité.
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> apps</h2>
+                <h2 class="slide-sub">C++</h2>
+                <div class="quote-text">
+                  Programmation bas niveau en C++ — pointeurs, gestion manuelle de la mémoire, structures et algorithmique. Pratiqué en IUT pour comprendre les fondements du développement système.
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> apps</h2>
+                <h2 class="slide-sub">68K</h2>
+                <div class="quote-text">
+                  Initiation à l'assembleur Motorola 68000 — registres, instructions bas niveau, gestion de la pile. Une approche machine qui donne une compréhension concrète de ce qu'un processeur exécute vraiment.
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> data</h2>
+                <h2 class="slide-sub">SQL</h2>
+                <div class="quote-text">
+                  Conception et interrogation de bases de données relationnelles — modélisation entité-association, requêtes SELECT, jointures, agrégats et sous-requêtes. Pratiqué en IUT sur des projets complets.
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> data</h2>
+                <h2 class="slide-sub">XML</h2>
+                <div class="quote-text">
+                  Structuration et échange de données avec XML — rédaction de DTD et schémas XSD, transformation XSLT, requêtes XPath. Utilisé en IUT pour modéliser et valider des flux de données.
+                </div>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="quote-text-wrap">
+                <h2 class="slide-title">Compétences <br> data</h2>
+                <h2 class="slide-sub">R</h2>
+                <div class="quote-text">
+                  Analyse statistique et visualisation de données avec R — manipulation de dataframes, graphiques, tests statistiques de base. Introduit en IUT pour aborder le traitement de données quantitatives.
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
@@ -78,34 +172,57 @@
           <div class="swiper-wrapper">
             <div class="swiper-slide">
               <div class="swiper-slide-inner" data-swiper-parallax="50%">
-                <img class="swiper-lazy"
-                     src="../../assets/images/landscape-1.png"
-                     data-src="../../assets/images/landscape-1.png"
-                />
+                <img class="swiper-lazy" src="../../assets/images/landscape-1.png" data-src="../../assets/images/landscape-1.png"/>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="swiper-slide-inner" data-swiper-parallax="50%">
-                <img class="swiper-lazy"
-                     src="../../assets/images/landscape-2.jpg"
-                     data-src="../../assets/images/landscape-2.jpg"
-                />
+                <img class="swiper-lazy" src="../../assets/images/landscape-2.jpg" data-src="../../assets/images/landscape-2.jpg"/>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="swiper-slide-inner" data-swiper-parallax="50%">
-                <img class="swiper-lazy"
-                     src="../../assets/images/feu.jpg"
-                     data-src="../../assets/images/feu.jpg"
-                />
+                <img class="swiper-lazy" src="../../assets/images/feu.jpg" data-src="../../assets/images/feu.jpg"/>
               </div>
             </div>
             <div class="swiper-slide">
               <div class="swiper-slide-inner" data-swiper-parallax="50%">
-                <img class="swiper-lazy"
-                     src="https://fakeimg.pl/600x400"
-                     data-src="https://fakeimg.pl/600x400"
-                />
+                <img class="swiper-lazy" src="../../assets/images/landscape-3.jpg" data-src="../../assets/images/landscape-3.jpg"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/landscape-1.png" data-src="../../assets/images/landscape-1.png"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/landscape-2.jpg" data-src="../../assets/images/landscape-2.jpg"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/feu.jpg" data-src="../../assets/images/feu.jpg"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/landscape-3.jpg" data-src="../../assets/images/landscape-3.jpg"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/landscape-1.png" data-src="../../assets/images/landscape-1.png"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/landscape-2.jpg" data-src="../../assets/images/landscape-2.jpg"/>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="swiper-slide-inner" data-swiper-parallax="50%">
+                <img class="swiper-lazy" src="../../assets/images/feu.jpg" data-src="../../assets/images/feu.jpg"/>
               </div>
             </div>
           </div>
@@ -116,6 +233,33 @@
       <div class="swiper-button-next"></div>
 
     </div>
+    <section class="voyage">
+      <img class="voyage-sky" src="../../assets/images/voyage-bg.png" alt="">
+      <img class="voyage-background" src="../../assets/images/voyage-overlay.webp" alt="">
+    </section>
+    <section class="picto-liste">
+        <div class="picto-liste--title">
+            <h2>mes hobbies</h2>
+        </div>
+        <div class="picto-liste--list">
+            <div class="picto-liste--elt">
+                <img class="picto" src="../../assets/images/velo.png" alt=""></img>
+                <h3>vtt de descente</h3>
+            </div>
+            <div class="picto-liste--elt">
+                <img class="picto" src="../../assets/images/metal.png" alt=""></img>
+                <h3>musique et cultures <br>alternatives</h3>
+            </div>
+            <div class="picto-liste--elt">
+                <img class="picto" src="../../assets/images/jeux-video.png" alt=""></img>
+                <h3>jeux<br> video</h3>
+            </div>
+            <div class="picto-liste--elt">
+                <img class="picto" src="../../assets/images/montagne.png" alt=""></img>
+                <h3>sports et vie<br> en montagne</h3>
+            </div>
+        </div>
+    </section>
     <script src="main.js"></script>
   </body>
 </html>
